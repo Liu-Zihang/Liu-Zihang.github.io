@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zihang Liu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<script>
+// ============================================================================
+//                        📝 可编辑内容区域 - 只需修改这里！
+// ============================================================================
+
+const DATA = {
+
+    // ========== 基本信息 ==========
+    name: "Zihang Liu",
+    photo: "image/profile/1.jpeg",
+    email: "liuzihang@bit.edu.cn",
+    github: "https://github.com/Liu-Zihang",
+    scholar: "https://scholar.google.com/citations?user=6n-przQAAAAJ&hl=zh-CN/",
+    wechat: "image/profile/wechat.jpg",  
+
+    // ========== 教育背景 ==========
+    // logo 为可选，不填则不显示校徽
+    education: [
+        { school: "Beijing Institute of Technology", major: "B.S. in Information and Computational Science", years: "2023.09 — 2027.09", department: "School of Mathematics and Statistics", rank: "1/18", logo: "image/education/bit.svg" },
+    ],
+
+    // ========== 关于我 ==========
+    // 一句一行，空行表示分段
+    about: [
+        "I am a <strong>3rd year undergraduate</strong> at <strong>Beijing Institute of Technology</strong>.",
+        "I'm currently working in <a href=\"https://www.lv-lab.org/nus/people.html\" target=\"_blank\">LV-Lab</a>, National University of Singapore, under the supervision of <a href=\"https://www.comp.nus.edu.sg/cs/people/yansc/\" target=\"_blank\">Prof. Shuicheng Yan</a>.",
+        "Previously, I had a wonderful time working with <a href=\"https://ha0tang.github.io\" target=\"_blank\">Prof. Hao Tang</a>, Peking University.",
+        "",
+        "<strong>I am grateful to the many people who have supported me throughout my academic journey</strong>. If you are interested in discussing research or would like to seek advice in areas where I may be helpful, please feel free to reach out. I welcome contact via email or WeChat for academic communication and collaboration.",
+    ],
+
+// I am a 3rd year undergraduate at Beijing Institute of Technology. I’m currently working in <a href="https://www.lv-lab.org/nus/people.html" target="_blank">LV-Lab</a>, National University of Singapore, under the supervision of Prof. Shuicheng Yan.I also closely work with Renrui Zhang. Previously, I had a wonderful time at Tiktok and MSRA, serving as research intern. More about my experience can be found in CV.
+
+// Many kind people helped me in my journey. If you want to talk more about research or seek advice that I might be able to provide, please no hesitation to reach out. My MBTI type is ENFJ(233), feel free to drop me an Email for any form of communication or collaboration!
+
+// 📌 We have several academic intern positions at DCML Lab (Peking University). We actively work on Data-Centric AI and Vision-Language Model. If you like what we do, don’t hesitate to contact me. I currently lead a research group of master’s and undergraduate students at Peking University. I am proud to have helped many of them secure top-tier labs and internships. You can find more details in Mentorship.
+    
+    // ========== 研究兴趣标签 ==========
+    interests: [
+        "Multimodal",
+        "LLM reasoning",
+        "Audio LLM",
+        "Diffusion Models",
+    ],
+
+    // ========== 新闻动态 ==========
+    news: [
+        { date: "[11.2025]", content: '🏆 I was awarded the <strong>BYD Scholarship(Top 0.5%)</strong> by BIT.' },
+        { date: "[08.2025]", content: '🎉 One paper <strong>Audio-Reasoner</strong> was accepted by <strong>EMNLP 2025</strong>, I am the co-first author.' },
+        { date: "[05.2025]", content: '🎉 One paper <strong>SAMSR</strong> was accepted by <strong>IJCAI 2025</strong>, I am the first author.' },
+        { date: "[03.2025]", content: '🔬 I Started visiting at <strong>LV-lab</strong> at <strong>National University of Singapore</strong>, supervised by <strong>Prof. Shuicheng Yan</strong>.' },
+        { date: "[09.2024]", content: '🔬 I Started visiting at <strong>Peking University</strong>, supervised by <strong>Prof. Hao Tang</strong>.' },
+    ],
+
+    // ========== 论文发表 ==========
+    publications: [
+        {
+            venue: "IJCAI 2025",
+            title: "Semantic-Guided Diffusion Model for Single-Step Image Super-Resolution",
+            authors: "Zihang Liu, Zhenyu Zhang, Hao Tang",
+            image: "image/paper/samsr.png",
+            paper: "https://arxiv.org/abs/2505.07071",
+            github: "https://github.com/Liu-Zihang/SAMSR"
+        },
+        {
+            venue: "EMNLP 2025",
+            title: "Audio-Reasoner: Improving Reasoning Capability in Large Audio Language Models",
+            authors: "Zhifei Xie*, Mingbao Lin*, Zihang Liu*, Pengcheng Wu, Shuicheng Yan, Chunyan Miao",
+            image: "image/paper/audioreasoner.png",
+            paper: "https://arxiv.org/abs/2503.02318",
+            github: "https://github.com/xzf-thu/Audio-Reasoner"
+        },
+        {
+            venue: "Arxiv",
+            title: "Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in Large Speech Models",
+            authors: "Zhifei Xie*, Ziyang Ma*, Zihang Liu, Kaiyu Pang, Hongyu Li, Jialin Zhang, Yue Liao, Deheng Ye, Chunyan Miao, Shuicheng Yan",
+            image: "image/paper/mini-omni-reasoner.png",
+            paper: "https://arxiv.org/abs/2508.15827",
+            github: "https://github.com/xzf-thu/Mini-Omni-Reasoner"
+        }
+    ],
+
+    // ========== 科研经历 ==========
+    // logo 为可选，不填则不显示
+    experience: [
+        {
+            date: "2025.03 — Present",
+            title: "Audio LLM, Multimodal Reasoning",
+            institution: "LV-lab, National University of Singapore",
+            advisor: "Prof. Shuicheng Yan, ACM Fellow, IEEE Fellow",
+            logo: "image/education/nus.svg"
+        },
+        {
+            date: "2024.09 — 2025.02",
+            title: "Image Super-Resolution, Low-level Vision",
+            institution: "Peking University",
+            advisor: "Prof. Hao Tang",
+            logo: "image/education/pku.png"
+        },
+    ],
+
+    // ========== 荣誉奖项 ==========
+    awards: [
+        { year: "2024-2025", name: "BYD Scholarship(Top 0.5%)" }, 
+        { year: "2023-2024, 2024-2025", name: "BIT Outstanding Student (Top 3%)" },
+    ]
+};
+
+// ============================================================================
+//                        🔒 以下代码无需修改
+// ============================================================================
+</script>
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --color-ink: #1a1a1a;
+        --color-ink-light: #4a4a4a;
+        --color-ink-lighter: #8a8a8a;
+        --color-paper: #ffffff;
+        --color-paper-warm: #fafafa;
+        --color-accent-gold: #b8860b;
+        --color-border: #e8e8e8;
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        color: var(--color-ink);
+        background-color: var(--color-paper);
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+    }
+    nav {
+        position: fixed; top: 0; left: 0; right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--color-border);
+    }
+    .nav-container {
+        max-width: 900px; margin: 0 auto; padding: 0 24px;
+        display: flex; justify-content: space-between; align-items: center; height: 48px;
+    }
+    .nav-logo {
+        font-family: var(--font-serif); font-size: 1.2em; font-weight: 600;
+        color: var(--color-ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+        color: var(--color-ink-light); text-decoration: none; font-size: 0.8em;
+        font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase;
+        transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--color-accent-gold); }
+    .hero {
+        padding: 68px 24px 40px;
+        background: var(--color-paper);
+        border-bottom: 1px solid var(--color-border);
+    }
+    .hero-container {
+        max-width: 900px; margin: 0 auto;
+        display: grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: center;
+    }
+    .profile-wrapper { position: relative; width: 160px; height: 200px; margin: 10px; }
+    .profile-image { width: 160px; height: 200px; overflow: hidden; position: relative; }
+    .profile-image img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-frame {
+        position: absolute; top: 6px; left: 6px; right: -6px; bottom: -6px;
+        border: 1px solid var(--color-accent-gold); pointer-events: none;
+    }
+    .hero-header {
+        display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+        padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--color-border);
+    }
+    .hero-info h1 {
+        font-family: var(--font-serif); font-size: 2.2em; font-weight: 600;
+        line-height: 1.1; color: var(--color-ink); margin: 0;
+    }
+    .hero-email {
+        font-size: 0.95em; color: var(--color-ink-light);
+        font-family: var(--font-sans); letter-spacing: 0.3px;
+    }
+    .hero-bio { font-size: 0.9em; color: var(--color-ink-light); line-height: 1.7; margin-bottom: 12px; }
+    .hero-bio a { color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-border); font-weight: 600; font-family: var(--font-serif); font-size: 1.2em; transition: border-color 0.3s ease, color 0.3s ease; }
+    .hero-bio a:hover { border-color: var(--color-accent-gold); color: var(--color-accent-gold); }
+    .hero-links { display: flex; gap: 16px; margin-top: 12px; }
+    .hero-links a {
+        color: var(--color-ink-light); text-decoration: none; font-size: 0.85em;
+        display: flex; align-items: center; gap: 5px; transition: color 0.3s ease;
+    }
+    .hero-links a:hover { color: var(--color-accent-gold); }
+    .hero-links a svg { width: 16px; height: 16px; }
+    .education-title { margin-bottom: 12px; }
+    .education-title::after { display: none; }
+    .education-separator { height: 1px; background: var(--color-border); margin-bottom: 20px; }
+    .education-list { list-style: disc; padding-left: 24px; }
+    .education-entry { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; color: var(--color-ink); font-size: 0.95em; line-height: 1.5; }
+    .education-entry::marker { color: var(--color-ink-light); }
+    .education-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; flex-shrink: 0; margin-top: 2px; }
+    .education-body { flex: 1; }
+    .education-line1 { margin-bottom: 4px; }
+    .education-line2 { font-family: var(--font-serif); font-size: 1.2em; color: var(--color-ink-lighter); }
+    .education-rank { color: var(--color-accent-gold); font-weight: 600; margin-left: 12px; }
+    .hero-about-title { font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-ink-lighter); margin-bottom: 8px; }
+    .interests-grid { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .interest-tag { padding: 4px 10px; border: 1px solid var(--color-border); font-size: 0.75em; color: var(--color-ink-light); transition: all 0.3s ease; }
+    .interest-tag:hover { border-color: var(--color-accent-gold); color: var(--color-accent-gold); }
+    section { padding: 40px 24px; }
+    section:nth-child(even) { background: var(--color-paper-warm); }
+    .section-container { max-width: 900px; margin: 0 auto; }
+    .section-title {
+        font-family: var(--font-serif); font-size: 1.5em; font-weight: 600;
+        margin-bottom: 20px; color: var(--color-ink); position: relative; display: inline-block;
+    }
+    .news-list { list-style: none; }
+    .news-item { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--color-border); align-items: baseline; }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { font-size: 0.9em; color: var(--color-accent-gold); font-weight: 600; min-width: 80px; flex-shrink: 0; font-variant-numeric: tabular-nums; font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif; }
+    .news-content { font-size: 0.9em; color: var(--color-ink-light); line-height: 1.5; }
+    .news-content a { color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-border); transition: border-color 0.3s ease; }
+    .news-content a:hover { border-color: var(--color-accent-gold); color: var(--color-accent-gold); }
+    .publication { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--color-border); align-items: start; }
+    .publication:last-child { border-bottom: none; }
+    .publication-preview { width: 180px; height: 110px; background: var(--color-paper-warm); overflow: hidden; border: 1px solid var(--color-border); }
+    .publication-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .publication-venue { font-size: 0.75em; font-weight: 600; color: var(--color-accent-gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .publication-title { font-family: var(--font-serif); font-size: 1.1em; font-weight: 600; line-height: 1.3; color: var(--color-ink); margin-bottom: 4px; }
+    .publication-authors { color: var(--color-ink-light); margin-bottom: 8px; font-size: 0.85em; }
+    .publication-links { display: flex; gap: 12px; }
+    .publication-links a { color: var(--color-ink-light); text-decoration: none; font-size: 0.8em; font-weight: 500; display: flex; align-items: center; gap: 4px; transition: color 0.3s ease; }
+    .publication-links a:hover { color: var(--color-accent-gold); }
+    .publication-links a svg { width: 14px; height: 14px; }
+    .experience-list { list-style: none; padding-left: 24px; position: relative; }
+    .experience-list::before { content: ''; position: absolute; left: 7.5px; top: 6px; bottom: 6px; width: 2px; background: var(--color-accent-gold); border-radius: 1px; }
+    .experience-entry { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 0; color: var(--color-ink); }
+    .experience-entry::before { content: ''; position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 9px; height: 9px; border-radius: 50%; background: var(--color-paper); border: 2px solid var(--color-accent-gold); }
+    .experience-logo-wrap { width: 44px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .experience-logo { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+    .experience-body { flex: 1; min-width: 0; }
+    .timeline-date { font-size: 0.75em; color: var(--color-accent-gold); font-weight: 600; margin-bottom: 2px; }
+    .timeline-institution { color: var(--color-ink-light); font-size: 0.98em; }
+    .timeline-advisor { color: var(--color-ink-lighter); font-size: 0.95em; font-style: italic; margin-top: 4px; }
+    .awards-list { list-style: none; }
+    .awards-list li { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-border); align-items: baseline; }
+    .awards-list li:last-child { border-bottom: none; }
+    .award-year { font-size: 0.8em; color: var(--color-accent-gold); font-weight: 600; min-width: 80px; flex-shrink: 0; }
+    .award-name { font-size: 0.9em; color: var(--color-ink-light); line-height: 1.5; }
+    footer { padding: 24px; text-align: center; border-top: 1px solid var(--color-border); }
+    .copyright { font-size: 0.8em; color: var(--color-ink-lighter); }
+    .copyright a { color: var(--color-ink-light); text-decoration: none; }
+    .copyright a:hover { color: var(--color-accent-gold); }
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .mobile-menu-btn span { display: block; width: 20px; height: 2px; background: var(--color-ink); margin: 4px 0; }
+    @media (max-width: 700px) {
+        .hero-container { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+        .profile-wrapper { width: 140px; height: 175px; margin: 0 auto; }
+        .profile-image { width: 140px; height: 175px; }
+        .hero-header { justify-content: center; }
+        .hero-links { justify-content: center; flex-wrap: wrap; }
+        .interests-grid { justify-content: center; }
+        .publication { grid-template-columns: 1fr; gap: 12px; }
+        .publication-preview { width: 100%; height: 140px; }
+        .awards-list li { flex-direction: column; gap: 4px; }
+        .nav-links { display: none; }
+        .mobile-menu-btn { display: block; }
+        .news-item { flex-direction: column; gap: 4px; }
+    }
+    @media (max-width: 480px) {
+        section { padding: 30px 16px; }
+        .nav-container { padding: 0 16px; }
+        .hero { padding: 58px 16px 30px; }
+        .hero-info h1 { font-size: 1.8em; }
+        .hero-bio { font-size: 0.85em; }
+        .hero-links { gap: 12px; }
+        .hero-links a { font-size: 0.8em; }
+        .section-title { font-size: 1.3em; }
+        .publication-title { font-size: 1em; }
+        .profile-wrapper, .profile-image { width: 120px; height: 150px; }
+    }
+    .fade-in { opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* WeChat Modal */
+    .wechat-modal {
+        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.6); z-index: 2000;
+        justify-content: center; align-items: center;
+        backdrop-filter: blur(4px);
+    }
+    .wechat-modal.show { display: flex; }
+    .wechat-modal-content {
+        background: var(--color-paper); padding: 40px; border-radius: 8px;
+        text-align: center; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: modalFadeIn 0.3s ease;
+    }
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .wechat-modal-content img {
+        width: 300px; height: 300px; object-fit: contain; border: 1px solid var(--color-border);
+    }
+    .wechat-modal-content p {
+        margin-top: 16px; color: var(--color-ink-light); font-size: 0.9em;
+    }
+    .wechat-modal-close {
+        position: absolute; top: 8px; right: 12px; background: none; border: none;
+        font-size: 24px; color: var(--color-ink-lighter); cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    .wechat-modal-close:hover { color: var(--color-ink); }
+</style>
+
+<!-- 页面内容由 JavaScript 自动生成 -->
+<div id="app"></div>
+
+<script>
+// SVG 图标
+const ICONS = {
+    email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+    github: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>',
+    scholar: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>',
+    paper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+    wechat: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg>'
+};
+
+// 将 about 数组转为 HTML：空行 = 分段
+const aboutHtml = (() => {
+    const parts = [];
+    let current = [];
+    for (const line of DATA.about) {
+        if (line === "") {
+            if (current.length) {
+                parts.push(`<p class="hero-bio">${current.join(' ')}</p>`);
+                current = [];
+            }
+        } else {
+            current.push(line);
+        }
+    }
+    if (current.length) parts.push(`<p class="hero-bio">${current.join(' ')}</p>`);
+    return parts.join('');
+})();
+
+// 渲染页面
+document.getElementById('app').innerHTML = `
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">${DATA.name}</a>
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#awards">Awards</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="profile-wrapper">
+                <div class="profile-image">
+                    <img src="${DATA.photo}" alt="${DATA.name}">
+                </div>
+                <div class="profile-frame"></div>
+            </div>
+            <div class="hero-info">
+                <div class="hero-header">
+                    <h1>${DATA.name}</h1>
+                    <span class="hero-email">${DATA.email}</span>
+                </div>
+                <div class="hero-about">
+                    <div class="hero-about-title">About</div>
+                    ${aboutHtml}
+                    <div class="interests-grid">
+                        ${DATA.interests.map(i => `<span class="interest-tag">${i}</span>`).join('')}
+                    </div>
+                    <div class="hero-links">
+                        <a href="${DATA.github}" target="_blank">${ICONS.github} GitHub</a>
+                        <a href="${DATA.scholar}" target="_blank">${ICONS.scholar} Scholar</a>
+                        <a href="javascript:void(0)" onclick="showWechatQR()">${ICONS.wechat} WeChat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="section-container">
+            <h2 class="section-title fade-in">🔥 News</h2>
+            <ul class="news-list fade-in">
+                ${DATA.news.map(n => `
+                    <li class="news-item">
+                        <span class="news-date">${n.date}</span>
+                        <span class="news-content">${n.content}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-container">
+            <h2 class="section-title education-title fade-in">🎓 Educations</h2>
+            <div class="education-separator"></div>
+            <ul class="education-list fade-in">
+                ${DATA.education.map(e => `
+                    <li class="education-entry">
+                        ${e.logo ? `<img class="education-logo" src="${e.logo}" alt="">` : ''}
+                        <div class="education-body">
+                            <div class="education-line1"><strong>${e.school}</strong> (${e.years}) ${e.major}</div>
+                            ${e.department || e.rank ? `<div class="education-line2">${e.department ? `<span>${e.department}</span>` : ''}${e.rank ? `<span class="education-rank">Rank: ${e.rank}</span>` : ''}</div>` : ''}
+                        </div>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="section-container">
+            <h2 class="section-title fade-in">📝 Publications</h2>
+            ${DATA.publications.map(p => `
+                <div class="publication fade-in">
+                    <div class="publication-preview">
+                        <img src="${p.image}" alt="${p.title}">
+                    </div>
+                    <div class="publication-content">
+                        <div class="publication-venue">${p.venue}</div>
+                        <h3 class="publication-title">${p.title}</h3>
+                        <p class="publication-authors">${p.authors.replace(/Zihang Liu/g, '<strong>Zihang Liu</strong>')}</p>
+                        <div class="publication-links">
+                            <a href="${p.paper}" target="_blank">${ICONS.paper} Paper</a>
+                            <a href="${p.github}" target="_blank">${ICONS.github} GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-container">
+            <h2 class="section-title fade-in">💼 Research Experience</h2>
+            <ul class="experience-list fade-in">
+                ${DATA.experience.map(e => `
+                    <li class="experience-entry">
+                        <div class="experience-logo-wrap">
+                            ${e.logo ? `<img class="experience-logo" src="${e.logo}" alt="">` : ''}
+                        </div>
+                        <div class="experience-body">
+                            <div class="timeline-date">${e.date}</div>
+                            <div class="timeline-institution">${e.institution}</div>
+                            <div class="timeline-advisor">Advisor: ${e.advisor}</div>
+                        </div>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="section-container">
+            <h2 class="section-title fade-in">🥇 Honors & Awards</h2>
+            <ul class="awards-list fade-in">
+                ${DATA.awards.map(a => `
+                    <li>
+                        <span class="award-year">${a.year}</span>
+                        <span class="award-name">${a.name}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p class="copyright">© 2025 ${DATA.name} · <a href="mailto:${DATA.email}">${DATA.email}</a></p>
+    </footer>
+
+    <div class="wechat-modal" id="wechatModal" onclick="hideWechatQR()">
+        <div class="wechat-modal-content" onclick="event.stopPropagation()">
+            <button class="wechat-modal-close" onclick="hideWechatQR()">&times;</button>
+            <img src="${DATA.wechat}" alt="WeChat QR Code">
+        </div>
+    </div>
+`;
+
+// 滚动动画
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// 微信二维码弹窗
+function showWechatQR() {
+    document.getElementById('wechatModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+function hideWechatQR() {
+    document.getElementById('wechatModal').classList.remove('show');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideWechatQR();
+});
+</script>
+
+</body>
+</html>
