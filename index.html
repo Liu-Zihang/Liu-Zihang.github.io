@@ -115,7 +115,11 @@ const DATA = {
     awards: [
         { year: "2024-2025", name: "BYD Scholarship(Top 0.5%)" }, 
         { year: "2023-2024, 2024-2025", name: "BIT Outstanding Student (Top 3%)" },
-    ]
+    ],
+
+    // ========== 访客地球（Miscellaneous） ==========
+    // 来自 mapmyvisitors 的 globe token
+    visitorGlobeToken: "rKH9Fflw2BLDcixLtoPq1DmuhrbIin6b9A9F6Cn7ijo"
 };
 
 // ============================================================================
@@ -323,6 +327,19 @@ const DATA = {
         transition: color 0.3s ease;
     }
     .wechat-modal-close:hover { color: var(--color-ink); }
+    .misc-globe {
+        width: 20%;
+        position: relative;
+        left: 40%;
+        min-width: 180px;
+    }
+    @media (max-width: 700px) {
+        .misc-globe {
+            width: 52%;
+            left: 24%;
+            min-width: 140px;
+        }
+    }
 </style>
 
 <!-- 页面内容由 JavaScript 自动生成 -->
@@ -367,6 +384,7 @@ document.getElementById('app').innerHTML = `
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#awards">Awards</a></li>
+                <li><a href="#miscellaneous">Miscellaneous</a></li>
             </ul>
             <button class="mobile-menu-btn" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -491,6 +509,13 @@ document.getElementById('app').innerHTML = `
         </div>
     </section>
 
+    <section id="miscellaneous">
+        <div class="section-container">
+            <h2 class="section-title fade-in">😄 Miscellaneous</h2>
+            <div class="misc-globe fade-in" id="miscVisitorGlobe"></div>
+        </div>
+    </section>
+
     <footer>
         <p class="copyright">© 2025 ${DATA.name} · <a href="mailto:${DATA.email}">${DATA.email}</a></p>
     </footer>
@@ -510,6 +535,18 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Miscellaneous 旋转地球访客图
+function initVisitorGlobe() {
+    const host = document.getElementById('miscVisitorGlobe');
+    if (!host || !DATA.visitorGlobeToken) return;
+    const script = document.createElement('script');
+    script.id = 'mmvst_globe';
+    script.type = 'text/javascript';
+    script.src = `https://mapmyvisitors.com/globe.js?d=${encodeURIComponent(DATA.visitorGlobeToken)}`;
+    host.appendChild(script);
+}
+initVisitorGlobe();
 
 // 平滑滚动
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
