@@ -118,8 +118,8 @@ const DATA = {
     ],
 
     // ========== 访客地球（Miscellaneous） ==========
-    // 来自 mapmyvisitors 的 globe token
-    visitorGlobeToken: "rKH9Fflw2BLDcixLtoPq1DmuhrbIin6b9A9F6Cn7ijo"
+    // 来自 clustrmaps 的 globe token
+    visitorGlobeToken: "Vx0nfWo1OBDvtiIA6fmWjEXBwBModsENZOUXue8IaPY"
 };
 
 // ============================================================================
@@ -541,9 +541,9 @@ function initVisitorGlobe() {
     const host = document.getElementById('miscVisitorGlobe');
     if (!host || !DATA.visitorGlobeToken) return;
     const script = document.createElement('script');
-    script.id = 'mmvst_globe';
+    script.id = 'clstr_globe';
     script.type = 'text/javascript';
-    script.src = `https://mapmyvisitors.com/globe.js?d=${encodeURIComponent(DATA.visitorGlobeToken)}`;
+    script.src = `https://clustrmaps.com/globe.js?d=${encodeURIComponent(DATA.visitorGlobeToken)}`;
     host.appendChild(script);
 }
 initVisitorGlobe();
