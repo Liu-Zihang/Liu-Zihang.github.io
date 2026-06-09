@@ -662,29 +662,97 @@ const DATA = {
     }
     .experience-advisor .arrow { color: var(--signal); margin-right: 6px; }
 
-    /* ============ News (single column cards) ============ */
-    .news-grid {
-        display: flex; flex-direction: column;
-        gap: 10px; list-style: none;
+    /* ============ News (editorial timeline) ============ */
+    .news-timeline {
+        position: relative;
+        padding-left: 36px;
     }
-    .news-item {
-        padding: 14px 20px;
-        background: var(--bg-1);
-        border: 1px solid var(--rule); border-radius: 6px;
-        display: grid; grid-template-columns: 110px 1fr; gap: 0 20px;
+    .news-timeline::before {
+        content: '';
+        position: absolute; left: 8px; top: 4px; bottom: 4px; width: 1px;
+        background: linear-gradient(180deg,
+            var(--signal-glow) 0%,
+            var(--rule-2) 14%,
+            var(--rule) 50%,
+            var(--rule-2) 86%,
+            transparent 100%);
+    }
+
+    .news-year-group { margin-bottom: 36px; }
+    .news-year-group:last-child { margin-bottom: 0; }
+
+    .news-year {
+        position: relative;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: 2.4rem; font-weight: 400; line-height: 1;
+        color: var(--signal-2);
+        letter-spacing: -0.025em;
+        margin-bottom: 22px;
+    }
+    .news-year::before {
+        content: '';
+        position: absolute; left: -34px; top: 50%;
+        width: 12px; height: 12px;
+        transform: translateY(-50%);
+        background: var(--bg);
+        border: 1.5px solid var(--signal-2);
+        border-radius: 50%;
+    }
+    .news-year::after {
+        content: '';
+        position: absolute; left: -22px; top: 50%;
+        width: 14px; height: 1px;
+        background: var(--signal-2); opacity: 0.4;
+    }
+
+    .news-items {
+        list-style: none;
+        display: flex; flex-direction: column; gap: 22px;
+    }
+    .news-row {
+        position: relative;
+        display: grid; grid-template-columns: 92px 1fr; gap: 22px;
         align-items: baseline;
-        transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
     }
-    .news-item:hover { border-color: rgba(31, 43, 209, 0.3); box-shadow: 0 14px 36px rgba(12, 18, 38, 0.08); }
-    .news-date {
-        font-family: var(--font-mono); font-size: 0.7rem;
-        color: var(--ink-3); font-weight: 500;
-        letter-spacing: 0.04em; text-transform: uppercase;
-        font-variant-numeric: tabular-nums;
-        white-space: nowrap;
+    .news-row::before {
+        content: '';
+        position: absolute; left: -32px; top: 9px;
+        width: 9px; height: 9px;
+        background: var(--bg);
+        border: 1.5px solid var(--ink-4);
+        border-radius: 50%;
+        transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
-    .news-content { font-size: 0.85rem; color: var(--ink-2); line-height: 1.55; }
+    .news-row:hover::before {
+        border-color: var(--signal);
+        background: var(--signal);
+        box-shadow: 0 0 14px var(--signal-glow);
+        transform: scale(1.15);
+    }
+    /* Most-recent entry — keeps a steady signal pulse to mark "current" */
+    .news-row.now::before {
+        background: var(--signal);
+        border-color: var(--signal);
+        box-shadow: 0 0 12px var(--signal-glow);
+        animation: livePulse 2.4s ease-in-out infinite;
+    }
+
+    .news-month {
+        font-family: var(--font-serif); font-style: italic;
+        font-size: 1.45rem; font-weight: 400; line-height: 1.05;
+        color: var(--ink);
+        letter-spacing: -0.005em;
+    }
+    .news-content {
+        font-size: 0.93rem; color: var(--ink-2); line-height: 1.65;
+    }
     .news-content strong { color: var(--ink); font-weight: 600; }
+    .news-content a {
+        color: var(--ink); text-decoration: none;
+        border-bottom: 1px solid var(--rule-2); padding-bottom: 1px;
+        transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .news-content a:hover { color: var(--signal); border-color: var(--signal); }
 
     /* ============ Credits (Education + Awards) ============ */
     .credits-grid {
@@ -1033,7 +1101,15 @@ const DATA = {
         .experience-entry { grid-template-columns: 1fr; gap: 8px; }
         .experience-logo-wrap { display: none; }
 
-        .news-item { grid-template-columns: 1fr; gap: 6px; padding: 12px 16px 14px; }
+        .news-timeline { padding-left: 28px; }
+        .news-timeline::before { left: 7px; }
+        .news-year { font-size: 1.8rem; margin-bottom: 16px; }
+        .news-year::before { left: -26px; width: 10px; height: 10px; }
+        .news-year::after { left: -17px; width: 10px; }
+        .news-row { grid-template-columns: 1fr; gap: 4px; }
+        .news-row::before { left: -25px; top: 8px; width: 8px; height: 8px; }
+        .news-month { font-size: 1.15rem; }
+        .news-items { gap: 18px; }
 
         .credits-grid { grid-template-columns: 1fr; gap: 32px; }
     }
@@ -1202,6 +1278,21 @@ const tickerItemsHtml = DATA.publications.map(p =>
     `<a class="ticker-item" href="${p.paper}" target="_blank" rel="noopener"><span class="arrow">▸</span><span class="t-title">${p.title}</span><span class="t-venue">${p.venue}</span></a>`
 ).join('');
 
+// News timeline: group by year, preserving user-supplied order; mark the first item as "now"
+const newsGroups = (() => {
+    const groups = [];
+    let cur = null;
+    DATA.news.forEach((n, i) => {
+        const raw = String(n.date).replace(/[\[\]]/g, '').trim();
+        const m = raw.match(/^(\d{1,2})\.(\d{4})$/);
+        const year  = m ? m[2] : '—';
+        const month = m ? MONTHS[parseInt(m[1], 10) - 1] : raw;
+        if (!cur || cur.year !== year) { cur = { year, items: [] }; groups.push(cur); }
+        cur.items.push({ month, content: n.content, isNow: i === 0 });
+    });
+    return groups;
+})();
+
 document.getElementById('app').innerHTML = `
     <nav>
         <div class="nav-container">
@@ -1367,13 +1458,21 @@ document.getElementById('app').innerHTML = `
                 <span class="ch-eyebrow">ch · 03 / broadcast log</span>
                 <h2 class="ch-title">News <em>&amp; Updates</em></h2>
             </div>
-            <ul class="news-grid fade-in">
-                ${DATA.news.map(n => `
-                    <li class="news-item">
-                        <span class="news-date">${fmtDate(n.date)}</span>
-                        <span class="news-content">${n.content}</span>
-                    </li>`).join('')}
-            </ul>
+            <div class="news-timeline fade-in">
+                ${newsGroups.map(group => `
+                    <div class="news-year-group">
+                        <div class="news-year">${group.year}</div>
+                        <ul class="news-items">
+                            ${group.items.map(it => `
+                                <li class="news-row${it.isNow ? ' now' : ''}">
+                                    <div class="news-month">${it.month}</div>
+                                    <div class="news-content">${it.content}</div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('')}
+            </div>
         </div>
     </section>
 
@@ -1600,7 +1699,6 @@ function applyTiltGlow(selector, tiltDeg = 4) {
 }
 applyTiltGlow('.hero-photo',  6);
 applyTiltGlow('.publication', 3.5);
-applyTiltGlow('.news-item',   4.5);
 
 // ============ Aurora parallax follow ============
 (function auroraFollow() {
