@@ -1249,10 +1249,10 @@ function makeProgressBars(count, playedRatio = 0.45) {
     return html;
 }
 
-function nowSGT() {
+function nowCST() {
     try {
         return new Intl.DateTimeFormat('en-GB', {
-            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Singapore'
+            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai'
         }).format(new Date());
     } catch { return '—'; }
 }
@@ -1312,7 +1312,7 @@ document.getElementById('app').innerHTML = `
 
     <!-- ===================== TRANSPORT BAR ===================== -->
     <div class="transport">
-        <span class="live"><span class="pulse"></span>● live · @ NUS · <span id="sgtClock">${nowSGT()}</span> SGT</span>
+        <span class="live"><span class="pulse"></span>● live · @ BIT · <span id="cstClock">${nowCST()}</span> CST</span>
         <span class="rule"></span>
         <span class="meta"><span>v.2026</span><span>48 kHz · 24-bit</span></span>
     </div>
@@ -1590,10 +1590,10 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     values.forEach(v => io.observe(v));
 })();
 
-// ============ Live SGT clock ============
+// ============ Live Beijing clock ============
 function tickClock() {
-    const el = document.getElementById('sgtClock');
-    if (el) el.textContent = nowSGT();
+    const el = document.getElementById('cstClock');
+    if (el) el.textContent = nowCST();
 }
 setInterval(tickClock, 30 * 1000);
 
